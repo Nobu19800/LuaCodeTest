@@ -18,5 +18,10 @@ matrix:
       env:
         - LUA="luajit=2.1"
 
+before_install:
+  - git clone --depth 1 https://github.com/cehoffman/luaenv.git ~/.luaenv
+  - export PATH="$HOME/.luaenv/bin:$PATH"
+  - luaenv install $LUA
+
 script:
     - lua test.lua
