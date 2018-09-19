@@ -16,7 +16,7 @@ before_install:
   - luarocks install tapered
 
 script:
-  - lua -lluacov awesome-tests.lua
+  - lua -lluacov test.lua
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 2ebd124e-c5be-4daa-8d5c-93586692ba3d

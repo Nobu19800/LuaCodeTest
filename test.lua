@@ -1,2 +1,3 @@
-print("test1")
-print("test2")
+local t = require 'tapered'
+require 'sample'
+t.done()
