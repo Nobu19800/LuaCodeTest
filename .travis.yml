@@ -1,0 +1,22 @@
+language: python
+
+matrix:
+  include:
+    - os: linux
+      env:
+        - LUA="lua=5.1"
+    - os: linux
+      env:
+        - LUA="lua=5.2"
+    - os: linux
+      env:
+        - LUA="lua=5.3"
+    - os: linux
+      env:
+        - LUA="luajit=2.0"
+    - os: linux
+      env:
+        - LUA="luajit=2.1"
+
+script:
+    - lua test.lua
