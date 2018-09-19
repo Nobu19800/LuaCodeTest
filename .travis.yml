@@ -1,26 +1,20 @@
 language: python
 
-matrix:
-  include:
-    - os: linux
-      env:
-        - LUA="lua=5.1"
-    - os: linux
-      env:
-        - LUA="lua=5.2"
-    - os: linux
-      env:
-        - LUA="lua=5.3"
-    - os: linux
-      env:
-        - LUA="luajit=2.0"
-    - os: linux
-      env:
-        - LUA="luajit=2.1"
+env:
+  global:
+    - LUAROCKS=2.4.1
+  matrix:
+    - LUA=5.1.5
+    - LUA=5.2.4
+    - LUA=5.3.3
+    - LUA=luajit-2.0.4
+    - LUA=luajit-2.1-dev
 
 before_install:
   - git clone --depth 1 https://github.com/cehoffman/luaenv.git ~/.luaenv
+  - git clone --depth 1 https://github.com/cehoffman/lua-build.git ~/.luaenv/plugins/lua-build
   - export PATH="$HOME/.luaenv/bin:$PATH"
+  - eval "$(luaenv init -)"
   - luaenv install $LUA
 
 script:
