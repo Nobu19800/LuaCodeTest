@@ -1,5 +1,11 @@
 language: python
 
+sudo: false
+
+os:
+  - osx
+  - linux
+
 env:
   global:
     - LUAROCKS=2.4.1
@@ -13,9 +19,12 @@ env:
 before_install:
   - git clone --depth 1 https://github.com/cehoffman/luaenv.git ~/.luaenv
   - git clone --depth 1 https://github.com/cehoffman/lua-build.git ~/.luaenv/plugins/lua-build
+  - git clone --depth 1 https://github.com/xpol/luaenv-luarocks.git ~/.luaenv/plugins/luaenv-luarocks
   - export PATH="$HOME/.luaenv/bin:$PATH"
   - eval "$(luaenv init -)"
   - luaenv install $LUA
+  - luaenv global $LUA
+  - luaenv luarocks $LUAROCKS
 
 script:
     - lua test.lua
